@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURJET PASSENGER PRE-FLIGHT FORM</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <form id="myform">
+    <!-- Prints the surjet logo -->
+    <!-- The alt allows so if the image does not load on the webpage, it will print out Surjet Charter -->
+    <img src="./images/surjet.png" alt="Surjet Charter">
+    
+    <h1 class="h1">PASSENGER PRE-FLIGHT FORM</h1>
+    <h2 class="h2">FOOD & BEVERAGE</h2>
+
+    <!-- Unordered list to create bullet points -->
+<p>
+    <ul>
+      <li>A 20% surcharge will be added to the cost of any catering and ground transportation arranged at Customers request and subject to a 100% cancelation fee</li>
+      <li>To best serve your needs, we require a 72-hour guarantee and notice</li>
+    </ul>
+  </p>
+
+    <!-- Asks user about their allergies -->
+    <!-- Creates 2 options between yes and no, and a textbox for the user to respond if they choose yes-->
+    <!-- input type="radio" creates a circle for the user to click on like a multiple choice question -->
+    <h3>Allergies:</h3>
+        <input type="radio" name="allergies" value="no" onclick="allergiesTextBox(false)"> No<br>
+        <input type="radio" name="allergies" value="yes" onclick="allergiesTextBox(true)"> Yes<br>
+
+    <div id="allergies" style="display: none;">
+        <label for="radio">Specify allergies:</label>
+        <textarea id="allergies-container" placeholder="Enter Allergies"></textarea>
+    </div>
+
+    <script>
+        function allergiesTextBox(showTextBox) {
+        var allergiesContainer = document.getElementById("allergies-container");
+        allergies.style.display = showTextBox ? "block" : "none";
+      }
+    </script>
+
+
+    <!-- Creates textbox for users enter their catering request -->
+    <h3>Catering Request:</h3>
+    <p>
+        <textarea id="catering" placeholder="Enter your Catering Request"></textarea>
+    </p>
+
+   
+<!-- Creats textbox for user to input any snack requests -->
+<h3>Snack Request:</h3>
+  <p><textarea id="snack" placeholder="Enter your Snack Request"></textarea></p>
+
+<!-- Creates textbox for user to input any other drink preferences -->
+<h3>Other Drink Preference/Request:</h3>
+  <p><textarea id="drink" placeholder="Enter your Preference Request"></textarea></p>
+    
+<!-- Asks user their wine preferences and gives 3 options of red and white wine that they can check off-->
+<!-- input type="checkbox" creates a checkbox for each type of wine -->
+<h3>Wine Preferences:</h3>
+<div>
+  <label for="red">Red:</label><br>
+  <input type="checkbox" name="red" value="Merlot" onchange="updateSelectedWines()"> Merlot<br>
+  <input type="checkbox" name="red" value="Cabernet Sauvignon" onchange="updateSelectedWines()"> Cabernet Sauvignon<br>
+  <input type="checkbox" name="red" value="Pinot Noir" onchange="updateSelectedWines()"> Pinot Noir<br>
+</div>
+<p>
+  <div>
+    <label for="white">White:</label><br>
+    <input type="checkbox" name="white" value="Chardonnay" onchange="updateSelectedWines()"> Chardonnay<br>
+    <input type="checkbox" name="white" value="Sauvignon Blanc" onchange="updateSelectedWines()"> Sauvignon Blanc<br>
+    <input type="checkbox" name="white" value="Pinot Grigio" onchange="updateSelectedWines()"> Pinot Grigio<br>
+  </div>
+</p>
+
+<script>
+  function updateSelectedWines() {
+    var selectedRedWines = getSelectedOptions("red");
+    var selectedWhiteWines = getSelectedOptions("white");
+
+    console.log("Selected Red Wines: " + selectedRedWines);
+    console.log("Selected White Wines: " + selectedWhiteWines);
+  }
+
+  function getSelectedOptions(optionName) {
+    var options = document.getElementsByName(optionName);
+    var selectedOptions = [];
+
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].checked) {
+        selectedOptions.push(options[i].value);
+      }
+    }
+
+    return selectedOptions;
+  }
+</script>
+
+<!-- Creates check box for champagne-->
+<p>   </p>
+<p><input type="checkbox">Champagne</p>
+
+<!-- Creates a textbox for any other wines the user wants -->
+<p>Other:</p>
+<p><textarea id="otherWines" placeholder="Enter Other Wine Requests"></textarea> </p>
+
+<!-- Asks user if they want beds and if they click yes then 2 options will pop up to choose from -->
+<h2 class="h2">CABIN</h2>
+
+<h3>Bedding Requirement:</h3>
+  <input type="radio" name="beddingRequirement" value="No" onclick="beddingRadio(false)"> No<br>
+  <input type="radio" name="beddingRequirement" value="Yes" onclick="beddingRadio(true)"> Yes<br>
+
+<p id="beds" style="display: none;">
+  <input type="radio" name="bedSelection">
+  <label for="bedSelection">One bed</label>
+</p>
+
+<div id="beds2" style="display: none;">
+  <input type="radio" name="bedSelection">
+  <label for="bedSelection">Two Beds</label>
+</div>
+
+<script>
+  function beddingRadio(showCheckbox) {
+    var checkboxContainer = document.getElementById("beds");
+    var beds2CheckBoxContainer = document.getElementById("beds2");
+    checkboxContainer.style.display = showCheckbox ? "block" : "none";
+    beds2CheckBoxContainer.style.display = showCheckbox ? "block" : "none";
+  }
+</script>
+
+<!-- Asks user if they want a flight attendant -->
+<h3>Flight Attendant:</h3>
+    <input type="radio" name="flight attendant" value="No" onclick="attendantTextBox(false)"> No<br>
+    <input type="radio" name="flight attendant" value="Yes" onclick="attendantTextBox(true)"> Yes<br>
+
+<h2 class="h2">TRANSPORTATION</h2>
+
+<!-- Asks user if they need ground tranportation -->
+<!-- If they do want ground transportation, 2 checkboxes will pop up if they want to get dropped off and picked up -->
+<h3>Ground transportation:</h3>
+  <input type="radio" name="groundTransportation" value="no" onclick="toggleTextBox(false)"> No<br>
+  <input type="radio" name="groundTransportation" value="yes" onclick="toggleTextBox(true)"> Yes<br>
+
+<p id="pickup-checkbox" style="display: none;">
+  <input type="checkbox" name="pickupTransportation" id="pickupTransportation"> 
+  <label for="pickupTransportation">To Departure Airport</label>
+</p>
+
+<div id="dropoff-checkbox-container" style="display: none;">
+  <input type="checkbox" name="dropoffTransportation" id="dropoffTransportation">
+  <label for="dropoffTransportation">From Airport to Final Destination</label>
+</div>
+
+
+
+<script>
+  function toggleTextBox(showCheckBox) {
+    var checkboxContainer = document.getElementById("pickup-checkbox");
+    var dropoffCheckboxContainer = document.getElementById("dropoff-checkbox-container");
+    checkboxContainer.style.display = showCheckBox ? "block" : "none";
+    dropoffCheckboxContainer.style.display = showCheckBox ? "block" : "none";
+
+  }
+
+</script>
+
+<!-- Creates textbox for user to specify -->
+<!-- I would like for the textbox to pop up when the user checks off one or both checkboxes but it is fine for now-->
+<p>If Yes, please specify:</p>
+<p><textarea id="pickup" placeholder="Specify Please"></textarea></p>
+
+<!-- Creates a submit button for the user to submit their information -->
+<p class="form-container">
+  <input type="submit" value="Submit" class="submit-button">
+
+  <!-- Creates unordered list stating what will happen if they request anything -->
+</p>    
+    <ul>
+        <li>A 20% surcharge will be added to the cost of any catering and ground transportation arranged at Customers request and subject to a 100% cancelation fee</li>
+        <li>To best serve your needs, we require a 72-hour guarantee and notice</li>
+    </ul>
+
+
+      
+    </form>
+</body>
+</html>
