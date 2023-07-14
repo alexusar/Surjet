@@ -1,0 +1,79 @@
+
+/* Makes all the text black */
+/* Also makes the background lightgray and calibri */
+body {
+    color: black;
+    background-color: lightgray;
+    font-family: Calibri, Arial, Sans-serif;
+  }
+
+  /* Adjusts the images size */
+img{
+    height: auto;
+    width: 200px;
+}
+
+/* Centers the h1 and h2 header text */
+.h1,
+.h2{
+    text-align: center;
+}  
+
+/* Changes h2 font */
+.h2{
+  font-family: roboto, sans-serif;
+}
+
+/* Changes size of textbox */
+#snack,
+#catering,
+#drink,
+#pickup,
+#otherWines{
+    width: 300px;
+    height: 150px;
+  }
+
+/* Makes ul text italic */
+ul{
+  font-style: italic;
+}
+
+/* Centers the submit button */
+.form-container {
+  text-align: center;
+}
+
+/* Changes the color of the submit button and the size */
+.submit-button {
+  background-color: darkslategray;
+  color: darkgoldenrod;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* *{
+  text-align: center;
+} */
+
+/* Adds a border around the whole web page */
+body {
+  border: 1px solid black;
+  padding: 20px; /* Optional: Add padding to create some space between the box and the content */
+}
+
+/* Adds border around all the h2 text */
+h2 {
+  border: 1px solid black;
+  padding: 20px; /* Optional: Add padding to create some space between the box and the content */
+  margin: 10px;
+}
+
+
